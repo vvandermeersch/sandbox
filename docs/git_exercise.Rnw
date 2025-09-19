@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\setcounter{section}{-1}
+
+\usepackage[top = 1.0in, bottom = 1.0in, left = 1.1in, right = 1.1in]{geometry}
+\usepackage{Sweave}
+
+\usepackage{amsmath}
+\usepackage{gensymb}
+
+\usepackage{natbib}
+\usepackage{hyperref}
+
+\parindent = 0pt
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\title{Introductory Exercise}
+\author{Temporal Ecology Lab}
+\maketitle
+
+\begin{itemize}
+  \item Do the steps in order.
+  \item Use only the Git Bash terminal and GitHub for steps 1 onward, except for running some R scripts in step 5 which is to be done by any R code editing application and R.
+  \item Make a file listing all commands used in the Git Bash terminal with comments, excluding non-modifying commands such as 'dir', 'ls', 'git status', etc.
+  \item Using File Explorer, Notepad, or any file viewer application to view files, without editing, is allowed.
+  \item Unless stated otherwise, run all scripts on the repository working directory
+\end{itemize}
+
+\section{Set up Git and GitHub}
+
+\section{Set up repository for exercise}
+\begin{enumerate}
+  \item Make a local repository
+  \item Extract files from the provided sandbox.zip file
+  \item Move the unzipped contents to the local repository
+  \item Make a .gitignore file and make Git ignore .rds files with one line
+  \item Make Git ignore .synctex.gz files with one line
+  \item Commit changes as 'set up repo'
+  \item Make a remote private repository named 'sandbox' on GitHub
+  \item Set the remote repository on GitHub as the remote upstream repository of the local repository
+  \item Push changes to the remote repository
+\end{enumerate}
+
+\section{Make a branch with changes}
+\begin{enumerate}
+  \item Make a branch called 'playground'
+  \item Make the following changes
+  \begin{itemize}
+    \item Remove the folder analyses/cleaning/
+    \item Remove the file analyses/figures/egret\_contmap.pdf
+    \item Remove the file analyses/output/egretclean.csv
+    \item Append a new line containing 'analyses/output/checking' to .gitignore
+  \end{itemize}
+  
+  \item Commit these changes as 'cleared out repo for bcvinvar and survin' 
+\end{enumerate}
+
+\section{Make changes to master branch}
+\begin{enumerate}
+  \item Make the following changes
+  \begin{itemize}
+    \item Remove the folder data/scrapedEgret/
+    \item Remove the folder analyses/input/egretScraping/
+    \item Remove the folder analyses/cleaning/
+    \item Remove the file analyses/figures/egret\_contmap.pdf
+    \item Remove the file analyses/output/egretclean.csv
+  \end{itemize}
+  
+  \item Commit these changes as 'removed egret files'
+\end{enumerate}
+
+\section{Make both branches up to date}
+\begin{enumerate}
+  \item Run 'git push sandbox playground:master' (NOTE: This is an irregular use of git push and is just used here for testing purposes)
+  \item Rebase the commit in the playground branch to the local master branch
+  \item Merge the changes in the master branch to the remote master branch, name the merge commit as 'unfortunate timing'
+  \item Push the changes in both local branches to their corresponding remote branches
+\end{enumerate}
+
+\section{Prepare for checking}
+\begin{enumerate}
+  \item Do the following in the local master branch:
+  \begin{enumerate}
+    \item Run the script analyses/check.sh
+    \item Add lines in analyses/check\_master.R to automatically set the working directory to the analyses folder in the local repository
+    \item Run analyses/check\_master.R
+    \item Run analyses/output/checking/check\_master.sh
+  \end{enumerate}
+  
+  \item Do the following in the local playground branch:
+  \begin{enumerate}
+    \item Add lines in analyses/check\_playground.R to automatically set the working directory to the analyses folder in the local repository
+    \item Run analyses/check\_playground.R
+    \item Run analyses/output/checking/check\_playground.sh
+  \end{enumerate}
+  
+  \item Do the following in the local master branch:
+  \begin{enumerate}
+    \item Rename the analyses/output/checking folder as analyses/output/for\_checking
+    \item Commit all changes in the local master branch as 'prepared for checking'
+  \end{enumerate}
+  
+  \item Invite the person checking this exercise as a collaborator to the remote repository 'sandbox' over at GitHub
+  \item Send an email informing them the exercise is finished with the text file of commands used
+\end{enumerate}
+
+\end{document}

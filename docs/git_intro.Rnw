@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+\usepackage[top = 1.0in, bottom = 1.0in, left = 1.1in, right = 1.1in]{geometry}
+\usepackage{Sweave}
+
+\usepackage{amsmath}
+\usepackage{gensymb}
+
+\usepackage{natbib}
+\usepackage{hyperref}
+
+\parindent = 0pt
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\title{Introduction to Git and GitHub}
+\author{Temporal Ecology Lab}
+\maketitle
+
+\section{Version Control in the Lab}
+
+Version control is an important practice in software engineering to track changes in project files, mostly code. In the lab, tracking and documenting changes are important as we develop lots of R code for data processing and analysis as well as for manuscript revisions. We usually apply version control to individual projects in the form of repositories. A repository is basically a folder in your laptop and all of its contents. We have a general structure for each repository as below:
+
+\begin{itemize}
+  \item[--] analyses/ - files for data processing, analysis, and presentation
+  \begin{itemize}
+    \item[--] figures/ - files for visualizing data
+    \item[--] input/ - raw data files used for analysis, should be a subset of data/
+    \item[--] output/ - files for all processed data, whether intermediate or final
+    \item[--] code files
+
+  \end{itemize}
+  \item[--] data/ - data as collected or received, files are never modified unless actively collecting data
+  \item[--] docs/ - notes, meeting logs, manuscript files 
+\end{itemize}
+
+Bigger projects can have a more complicated directory structure, but the base structure is retained. We also use an online host to store these repositories such that we can designate multiple individuals to make changes to a single repository, tracking changes from all collaborators.
+
+\section{Git and GitHub}
+
+Our version control system of choice is Git and the online repository host GitHub for collaboration and project management. The subsections below provide a guide on how to start using Git and GitHub. Note, Git and GitHub have a lot more features than those enumerated below, but they are enough for our purposes. Go through this exercise first to start working on code-based projects in the lab, and pursue understanding Git and GitHub more after, if desired.
+
+\subsection{Installing Git}
+\begin{enumerate}
+  \item Install Git using instructions over at \href{https://git-scm.com/downloads}{https://git-scm.com/downloads} for your operating system.
+  \item Make a GitHub account over at \href{https://github.com/}{https://github.com/}
+  \item Set your username and email address which are used to identify authors of changes, also used by GitHub to associate changes to corresponding accounts
+  \item (Recommended) Set a system for authentication so inputting credentials for connecting to GitHub is only required for the first one, Git Credential Manager (GCM) for HTTPS for local laptops (SSH for lab servers, \href{https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh}{link here})
+\end{enumerate}
+
+\subsection{Making repositories}
+\begin{enumerate}
+  \item Navigate to the folder to be tracked as a repository
+  \item Apply version control through 'git init'
+  \item Make a remote repository at GitHub
+  \item Set the GitHub repository as the remote repository of the local repository through 'git remote'
+  \item If the remote repository exists already, navigate to the folder where the local repository folder is desired and clone the repository through 'git clone'
+\end{enumerate}
+
+\subsection{Making changes}
+Tracked changes in Git are packaged as commits, similar to a version number (or ID), which can accommodate diverging and converging versions. There is an intermediate step between changes and commits usually called a staging area. Changes must first be moved to the staging area then made into combined into a single commit.
+
+\begin{enumerate}
+ \item Make changes (edit existing file, make new file, etc.) to repository
+ \item Move changes to staging area through 'git add'
+ \item Make a commit through 'git commit'
+ \item If moving a change backwards, use 'git restore'
+ \item If unmaking a commit, use 'git reset'
+\end{enumerate}
+
+\subsection{Getting changes from and making changes to remote repository}
+\begin{enumerate}
+  \item (Recommended) Start each session of making changes by retrieving changes applied to the remote repository through 'git pull'
+  \item After making commits locally, apply these changes to the remote repository through 'git push'
+\end{enumerate}
+
+\subsection{Working with branches}
+Branches are separate workspaces which share commit histories until the point of divergence. They are usually used when making changes to parts of the project without making changes to the main branch. We don't usually work with them but knowing a bit about branches can help. The related commands are below:
+
+\begin{itemize}
+  \item git branch
+  \item git checkout
+  \item git switch
+\end{itemize}
+
+\subsection{Resolving merge conflicts}
+When working with multiple collaborators, there can be conflicts when trying to apply changes to the remote repository. For example, a collaborator pushed a commit to the remote repository while changes are being made to a local repository. When the time comes to push these commits to the remote repository, there may be conflicts in the changes. Usually, these are first resolved locally before being applied to the remote repository. The related commands are below:
+
+\begin{itemize}
+  \item git rebase
+  \item git merge
+  \item git fetch
+\end{itemize}
+
+\end{document}

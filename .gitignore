@@ -1,0 +1,7 @@
+*.rds
+
+*.synctex.gz
+
+*.log
+
+analyses/output/phen_proj.csv
